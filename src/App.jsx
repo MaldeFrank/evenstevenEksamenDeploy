@@ -21,7 +21,7 @@ function App() {
   }, [loggedIn]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/'>
       <Routes>
       
         <Route
