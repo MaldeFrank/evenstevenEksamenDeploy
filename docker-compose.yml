@@ -8,6 +8,7 @@ services:
     restart: unless-stopped
     command:
       - "--log.level=DEBUG"
+      # - "--api.insecure=true"
       - "--api.dashboard=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
@@ -17,11 +18,15 @@ services:
       - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
       - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
-      - "--certificatesresolvers.myresolver.acme.email=maldefrankmidtgaard@gmail.com"
+      #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
+      - "--certificatesresolvers.myresolver.acme.email=thomas@webtrade.dk"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      # Enable dashboard
+      - "--api.dashboard=true"
+    # Dynamic Configuration
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik_https.rule=Host(`traefik.cybershark.dk`)"
+      - "traefik.http.routers.traefik_https.rule=Host(`traefik.cphbusinessapps.dk`)"
       - "traefik.http.routers.traefik_https.entrypoints=websecure"
       - "traefik.http.routers.traefik_https.tls=true"
       - "traefik.http.routers.traefik_https.tls.certResolver=myresolver"
@@ -42,13 +47,13 @@ services:
       - backend
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`whoami.cybershark.dk`)"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.cphbusinessapps.dk`)"
       - "traefik.http.routers.whoami.entrypoints=websecure"
       - "traefik.http.routers.whoami.tls.certresolver=myresolver"
 
   europe:
     image: "malde321/evensteven:latest"
-    container_name: "evensteven"
+    container_name: "europeapp"
     networks:
       - backend
     labels:
@@ -56,7 +61,7 @@ services:
       - "traefik.http.routers.europe.rule=Host(`europe.cybershark.dk`)"
       - "traefik.http.routers.europe.entrypoints=websecure"
       - "traefik.http.routers.europe.tls.certresolver=myresolver"
-      - "com.centurylinklabs.watchtower.enable=false"
+      - "com.centurylinklabs.watchtower.enable=true"
 
   db:
     image: postgres:latest
@@ -73,6 +78,7 @@ services:
     networks:
       - backend
     labels:
+      # Watchtower configuration
       - "com.centurylinklabs.watchtower.enable=false"
 
   api:
@@ -101,7 +107,7 @@ services:
     image: containrrr/watchtower
     container_name: watchtower
     environment:
-      REPO_USER: malde321
+      REPO_USER: webtrade
       REPO_PASS: ${DOCKERHUB_TOKEN}
     labels:
       com.centurylinklabs.watchtower.enable: "false"
@@ -109,7 +115,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - backend
-    command: --interval 600 --cleanup --debug
+    command: --interval 600 --cleanup --debug # checks for updates every 600 seconds (10 min), cleans up old images, and outputs debug logs
 
 networks:
   backend:
