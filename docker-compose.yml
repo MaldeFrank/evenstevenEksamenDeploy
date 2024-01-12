@@ -19,14 +19,14 @@ services:
       - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
       #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
-      - "--certificatesresolvers.myresolver.acme.email=thomas@webtrade.dk"
+      - "--certificatesresolvers.myresolver.acme.email=maldefrankmidtgaard@gmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       # Enable dashboard
       - "--api.dashboard=true"
     # Dynamic Configuration
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik_https.rule=Host(`traefik.cphbusinessapps.dk`)"
+      - "traefik.http.routers.traefik_https.rule=Host(`traefik.cybershark.dk`)"
       - "traefik.http.routers.traefik_https.entrypoints=websecure"
       - "traefik.http.routers.traefik_https.tls=true"
       - "traefik.http.routers.traefik_https.tls.certResolver=myresolver"
@@ -47,20 +47,20 @@ services:
       - backend
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`whoami.cphbusinessapps.dk`)"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.cybershark.dk`)"
       - "traefik.http.routers.whoami.entrypoints=websecure"
       - "traefik.http.routers.whoami.tls.certresolver=myresolver"
 
-  europe:
+  evensteven:
     image: "malde321/evensteven:latest"
-    container_name: "europeapp"
+    container_name: "evenstevenapp"
     networks:
       - backend
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.europe.rule=Host(`europe.cybershark.dk`)"
-      - "traefik.http.routers.europe.entrypoints=websecure"
-      - "traefik.http.routers.europe.tls.certresolver=myresolver"
+      - "traefik.http.routers.evensteven.rule=Host(`cybershark.dk`)"
+      - "traefik.http.routers.evensteven.entrypoints=websecure"
+      - "traefik.http.routers.evensteven.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=true"
 
   db:
@@ -98,7 +98,7 @@ services:
       - backend
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.api.rule=Host(`api.cphbusinessapps.dk`)"
+      - "traefik.http.routers.api.rule=Host(`api.cybershark.dk`)"
       - "traefik.http.routers.api.entrypoints=websecure"
       - "traefik.http.routers.api.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=true"
