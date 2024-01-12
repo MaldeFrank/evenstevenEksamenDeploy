@@ -1,6 +1,7 @@
 version: "3.3"
 
 services:
+
   traefik:
     image: "traefik:v2.10"
     container_name: "traefik"
@@ -20,6 +21,8 @@ services:
       #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.myresolver.acme.email=maldefrankmidtgaard@gmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      # Enable dashboard
+      - "--api.dashboard=true"
     # Dynamic Configuration
     labels:
       - "traefik.enable=true"
@@ -105,8 +108,7 @@ services:
     container_name: watchtower
     environment:
       REPO_USER: malde321
-      REPO_PASS: ${DOCKERHUB_TOKEN}
-      DOCKERHUB_TOKEN: ${DOCKERHUB_TOKEN}
+      REPO_PASS: dckr_pat_yOt_ThTbHsMjnpgrC9iymf7970M
     labels:
       com.centurylinklabs.watchtower.enable: "true"
     volumes:
