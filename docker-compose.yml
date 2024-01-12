@@ -104,18 +104,19 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   watchtower:
-    image: containrrr/watchtower
-    container_name: watchtower
-    environment:
-      REPO_USER: malde321
-      REPO_PASS: ${DOCKERHUB_TOKEN}
-    labels:
-      com.centurylinklabs.watchtower.enable: "true"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - backend
-    command: --interval 600 --cleanup --debug # checks for updates every 600 seconds (10 min), cleans up old images, and outputs debug logs
+  image: containrrr/watchtower
+  container_name: watchtower
+  environment:
+    REPO_USER: malde321
+    REPO_PASS: ${DOCKERHUB_TOKEN}
+    DOCKERHUB_TOKEN: ${DOCKERHUB_TOKEN} # Pass the GitHub Actions secret as DOCKERHUB_TOKEN
+  labels:
+    com.centurylinklabs.watchtower.enable: "true"
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  networks:
+    - backend
+  command: --interval 600 --cleanup --debug # checks for updates every 600 seconds (10 min), cleans up old images, and outputs debug logs
 
 networks:
   backend:
