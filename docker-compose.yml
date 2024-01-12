@@ -26,7 +26,7 @@ services:
     # Dynamic Configuration
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik_https.rule=Host(`traefik.cybershark.dk`)"
+      - "traefik.http.routers.traefik_https.rule=Host(`traefik.www.cybershark.dk`)"
       - "traefik.http.routers.traefik_https.entrypoints=websecure"
       - "traefik.http.routers.traefik_https.tls=true"
       - "traefik.http.routers.traefik_https.tls.certResolver=myresolver"
@@ -47,7 +47,7 @@ services:
       - backend
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`whoami.cybershark.dk`)"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.www.cybershark.dk`)"
       - "traefik.http.routers.whoami.entrypoints=websecure"
       - "traefik.http.routers.whoami.tls.certresolver=myresolver"
 
@@ -58,7 +58,7 @@ services:
       - backend
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.evensteven.rule=Host(`evensteven.cybershark.dk`)"
+      - "traefik.http.routers.evensteven.rule=Host(`evensteven.www.cybershark.dk`)"
       - "traefik.http.routers.evensteven.entrypoints=websecure"
       - "traefik.http.routers.evensteven.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=true"
@@ -98,7 +98,7 @@ services:
       - backend
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.api.rule=Host(`api.cybershark.dk`)"
+      - "traefik.http.routers.api.rule=Host(`api.www.cybershark.dk`)"
       - "traefik.http.routers.api.entrypoints=websecure"
       - "traefik.http.routers.api.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=true"
