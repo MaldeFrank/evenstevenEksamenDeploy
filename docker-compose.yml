@@ -33,7 +33,7 @@ services:
       - "traefik.http.routers.traefik_https.service=api@internal"
     ports:
       - "443:443"
-      - "80:80"
+      - "8080:8080"
     networks:
       - backend
     volumes:
