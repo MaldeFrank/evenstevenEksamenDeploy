@@ -1,0 +1,62 @@
+
+.event-name-box{
+    background-color:white;
+    width: 70vh;
+    height: 5vh;
+    border-top: 2px solid #0e0f0f;
+  border-right: 2px solid #111111; 
+  border-bottom: 2px solid #030303; 
+  border-left: 2px solid #0c0d0d;
+  position: relative;
+  left: 50vh;
+  bottom: 15vh;
+}
+
+.event-name-label{
+font-size: 3vh;
+border-bottom: #030303;
+position: relative;
+bottom: 0.5vh;
+
+}
+
+.event-name{
+    font-size: 20px;
+    height: 30px;
+    width: 120px;
+    border-bottom: #030303;
+    border-top: #030303;
+    border-right: #030303;
+    border-left: #030303;
+    position: relative;
+    bottom: 0.5vh;
+}
+
+.user-label{
+  font-size: 3vh;
+  position: relative;
+  left: 19vh;
+  bottom: 0.5vh;
+}
+
+.button-plus-person{
+  position: relative;
+  left: 19vh;
+  top: 0.5vh;
+}
+
+.add-person-div{
+
+}
+
+.show-users-div{
+  width: 70vh;
+  height: 50vh;
+  background-color: rgb(249, 249, 249);
+}
+
+.remove-user-button{
+position:relative;
+top: 0.2vh;
+left: 1vh;
+}
