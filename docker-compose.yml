@@ -107,7 +107,7 @@ services:
     image: containrrr/watchtower
     container_name: watchtower
     environment:
-      REPO_USER: malde321
+      REPO_USER: webtrade
       REPO_PASS: ${DOCKERHUB_TOKEN}
     labels:
       com.centurylinklabs.watchtower.enable: "true"
