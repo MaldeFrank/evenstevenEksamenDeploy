@@ -58,9 +58,9 @@ services:
       - backend
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.europe.rule=Host(`cybershark.dk`)"
-      - "traefik.http.routers.europe.entrypoints=websecure"
-      - "traefik.http.routers.europe.tls.certresolver=myresolver"
+      - "traefik.http.routers.evensteven.rule=Host(`evensteven.cybershark.dk`)"
+      - "traefik.http.routers.evensteven.entrypoints=websecure"
+      - "traefik.http.routers.evensteven.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=true"
 
   db:
