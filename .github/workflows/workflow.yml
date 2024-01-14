@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Run the job on the latest version of Ubuntu.
+    runs-on: ubuntu-latest  # Run the job on the latest version of Ubuntu on a virtual machine hosted by github actions.
 
     steps:
       -
